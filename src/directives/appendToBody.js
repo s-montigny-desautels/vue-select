@@ -1,12 +1,10 @@
+import { nextTick } from 'vue'
+
 export default {
   mounted(el, { instance }) {
     if (instance.appendToBody) {
-      const {
-        height,
-        top,
-        left,
-        width,
-      } = instance.$refs.toggle.getBoundingClientRect()
+      const { height, top, left, width } =
+        instance.$refs.toggle.getBoundingClientRect()
       let scrollX = window.scrollX || window.pageXOffset
       let scrollY = window.scrollY || window.pageYOffset
       el.unbindPosition = instance.calculatePosition(el, instance, {
@@ -20,7 +18,7 @@ export default {
   unmounted(el, { instance }) {
     if (instance.appendToBody) {
       if (el.unbindPosition && typeof el.unbindPosition === 'function') {
-        el.unbindPosition()
+        nextTick(() => el.unbindPosition())
       }
     }
   },
