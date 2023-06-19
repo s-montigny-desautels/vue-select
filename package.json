@@ -34,7 +34,7 @@
     "commit": "git-cz",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "prepublish": "npm run build",
+    "prepublish": "vite build",
     "preview": "vite preview --port 5050",
     "test": "vitest --environment jsdom",
     "coverage": "vitest --run --coverage --environment jsdom --silent",
