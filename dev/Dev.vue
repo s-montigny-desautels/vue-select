@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <button v-if="config.appendToBody" @click="hide">Hide</button>
+    <button v-if="config.appendToBody || config.appendToTopLayer" @click="hide">
+      Hide
+    </button>
     <v-select v-if="!hidden" v-model="selected" v-bind="config" />
   </div>
 </template>
@@ -16,7 +18,8 @@ export default {
     selected: null,
     config: {
       options: countries,
-      appendToBody: true,
+      appendToBody: false,
+      appendToTopLayer: true,
     },
   }),
   methods: {

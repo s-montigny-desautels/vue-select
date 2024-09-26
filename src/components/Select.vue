@@ -93,6 +93,7 @@
           class="vs__dropdown-menu"
           role="listbox"
           tabindex="-1"
+          v-bind="appendToTopLayer ? { popover: 'manual' } : {}"
           @mousedown.prevent="onMousedown"
           @mouseup="onMouseUp"
         >
@@ -155,7 +156,7 @@ export default {
   directives: { appendToBody },
 
   mixins: [pointerScroll, typeAheadPointer, ajax],
-  
+
   compatConfig: {
     MODE: 3,
   },
@@ -635,6 +636,16 @@ export default {
      * @type {Boolean}
      */
     appendToBody: {
+      type: Boolean,
+      default: false,
+    },
+
+    /**
+     * Append the dropdown element to the end of the top layer
+     * and size/position it dynamically. Use it if you use native dialog/popover
+     * @type {Boolean}
+     */
+    appendToTopLayer: {
       type: Boolean,
       default: false,
     },
